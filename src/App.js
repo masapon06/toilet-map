@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 // components
-import { Map } from './components/Map.jsx';
+import { Screen } from './components/Screen.jsx';
 // import { Tab } from './containers/Tab.jsx';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         <Route
           exact
           path="/">
-          <List />          
+          <Screen />          
         </Route>
       </Switch>
     </Router>
