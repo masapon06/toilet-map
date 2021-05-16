@@ -18,7 +18,7 @@ function App() {
         <Route
           exact
           path="/">
-          <Map />          
+          <List />          
         </Route>
       </Switch>
     </Router>

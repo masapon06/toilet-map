@@ -1,6 +1,6 @@
 import React, { Fragment, useCallback, useRef } from 'react';
 import { GOOGLE_API_KEY } from '../credentials.js';
-import { mapStyles } from '../mapStyle.js';
+import { mapStyles } from '../mapConfig.js';
 import { PlaceInfo } from './PlaceInfo.jsx'
 import { GoogleMap, useLoadScript, LoadScript } from "@react-google-maps/api";
 // import mapStyles from "./mapUtils/mapStyles";
@@ -14,8 +14,8 @@ const mapContainerStyle = {
 // 地図の大きさを指定します。
 
 const center = {
-    lat: 43.048225,
-    lng: 141.49701,
+    lat: 34.7082863,
+    lng: 135.4441847,
   };
 
 const position_1 = {
@@ -42,7 +42,7 @@ const options = {
   styles: mapStyles,
   disableDefaultUI: true,
   // デフォルトUI（衛星写真オプションなど）をキャンセルします。
-  zoomControl: true,
+  zoomControl: false,
 };
 
 /*
@@ -89,7 +89,7 @@ export const Map = () => {
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
-        zoom={8}
+        zoom={18}
 　　　　　// デフォルトズーム倍率を指定します。
         center={center}
 　　　　　// 札幌周辺にデフォルトのセンターを指定しました。
