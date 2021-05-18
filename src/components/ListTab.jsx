@@ -8,9 +8,9 @@ import AccessibleForwardIcon from '@material-ui/icons/AccessibleForward';
 const FooterWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
-  padding: 8px 32px;
+  padding: ;
   border-top: thin solid #000000;
-  width: "100%";
+  width: 100%;
   height: "15vh";
   position: absolute;
   bottom: 0;
@@ -18,7 +18,6 @@ const FooterWrapper = styled.div`
 
 const TabWrapper = styled.div`
   width: 50vw;
-  height: "15vh";
 `;
 
 const IconWrappr = styled.div`

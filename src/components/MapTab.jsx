@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Box, IconButton } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import AccessibleForwardIcon from '@material-ui/icons/AccessibleForward';
 
 const TabWrapper = styled.div`
   width: 50vw;
-  height: "15vh";
 `;
 
 const IconWrappr = styled.div`
