@@ -23,18 +23,18 @@ const TabWrapper = styled.div`
 const IconWrappr = styled.div`
     text-align: center;
 `;
-
-export const ListTab = ({
-    posts,
-    onClickListTab
+// 
+/**/
+export const ClosestTab = ({
+    onClickClosestTab,
 }) => {
     return (
-        <TabWrapper onClick={() => onClickListTab(posts)}>
+        <TabWrapper onClick={() => onClickClosestTab()}>
             <IconWrappr>
                 <IconButton fontSize="large" color="primary" aria-label="purpose" className="list">
-                    <FavoriteIcon />
+                    <AccessibleForwardIcon />
                 </IconButton>
             </IconWrappr>
         </TabWrapper>   
     )
-};
+}

@@ -3,6 +3,8 @@ import { GOOGLE_API_KEY } from '../credentials.js';
 import { mapStyles } from '../mapConfig.js';
 // import { PlaceInfo } from './PlaceInfo.jsx'
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
+import styled from 'styled-components';
+
 import { HeaderWrapper } from "./Header.jsx";
 
 const markerLabel = {
@@ -18,6 +20,10 @@ const mapContainerStyle = {
   height: "70vh",
   width: "100%",
 };
+
+const MapWrapper = styled.div`
+  position: fixed;
+`;
 /*
 const center = {
   lat: 37.912039,

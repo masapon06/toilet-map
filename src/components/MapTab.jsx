@@ -5,8 +5,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import AccessibleForwardIcon from '@material-ui/icons/AccessibleForward';
 
 const TabWrapper = styled.div`
-  width: 50vw;
-`;
+  width: 33.33vw; 
+`; // TODO: オーバーレイリストボタン実装後50vwに修正
 
 const IconWrappr = styled.div`
     text-align: center;

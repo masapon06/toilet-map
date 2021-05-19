@@ -18,10 +18,7 @@ export const HeaderWrapper = styled.div`
 const Header = () => {
     return (
         <HeaderWrapper>
-            <IconButton fontSize="large" color="secondary" aria-label="favorite" className="map" 
-            >
-                <FavoriteIcon />
-            </IconButton>        
+
       </HeaderWrapper>
     )
 };
