@@ -30,16 +30,16 @@ export const Header = ({
             <div className="all-wrapper">
               <div className="switch-wrapper">
                 { switchScreen.isVisibleList &&
-                <div className="map-off-button" onClick={() => onClickMapButton(switchScreen.posts)}>マップ</div>
+                <div className="map-off-button" onClick={() => onClickMapButton(switchScreen.posts)}>マップで表示</div>
                 }
                 { switchScreen.isVisibleList && 
-                <div className="list-on-button">リスト</div>
+                <div className="list-on-button">リストで表示</div>
                 }
                 { switchScreen.isVisibleMap &&
-                <div className="map-on-button">マップ</div>
+                <div className="map-on-button">マップで表示</div>
                 }
                 { switchScreen.isVisibleMap && 
-                <div className="list-off-button" onClick={() => onClickListButton(switchScreen.posts)}>リスト</div>
+                <div className="list-off-button" onClick={() => onClickListButton(switchScreen.posts)}>リストで表示</div>
                 }
               </div>
             </div>

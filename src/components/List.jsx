@@ -5,22 +5,16 @@ import SearchIcon from '../images/searchIcon.svg';
 export const List = ({posts}) => {  
 
   return (
-    <div>
-        <ul>
+    <div className="container">
         {
             posts.map(post => (
-            <div>
-              <li key={`${post.latitude * post.longitude}list`}>
-                {post.info}
-              </li>
-              <li>
-                {`${post.distance} km先`}
-              </li>
-            </div>
+              <div className="posts-index-item" >
+                <a className="post-title">{post.info}</a> <br></br>
+                <a className="small-text">{`${post.distance} km先`}</a>
+              </div>
               )
             )
-        }
-        </ul>        
+        }     
     </div>
 )
 }

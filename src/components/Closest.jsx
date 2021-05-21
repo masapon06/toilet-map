@@ -15,22 +15,16 @@ export const Closest = ({closestToilets}) => {
   });
 
   return (
-    <div>
-        <ul>
-        {
-            closestToilets.map(toilet => (
-            <div>
-              <li key={`${toilet.latitude * toilet.longitude}list`}>
-                {toilet.info}
-              </li>
-              <li>
-                {`${toilet.distance} km先`}
-              </li>
-            </div>
-              )
-            )
-        }
-        </ul>        
+    <div className="container">
+    {
+        closestToilets.map(post => (
+          <div className="posts-index-item" >
+            <a className="post-title">{post.info}</a> <br></br>
+            <a className="small-text">{`${post.distance} km先`}</a>
+          </div>
+          )
+        )
+    }
     </div>
 )
 }

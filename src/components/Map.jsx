@@ -150,7 +150,7 @@ export const Map = ({
                 }}
               >
                 <div className="info-wrapper">
-                  <a className="info-link" href={`https://maps.apple.com/maps?ll=${selected.latitude},${selected.longitude}`}>{selected.info}</a>
+                  <a className="info-link" href={`http://maps.apple.com/maps?q=${selected.info}&ll=${selected.latitude},${selected.longitude}`}>{selected.info}</a>
                 </div>
               </InfoWindow>
               ) : null}
