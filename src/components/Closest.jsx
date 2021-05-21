@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 
-export const Closest = ({closestToilets}) => {  
+export const Closest = ({closestToilets}) => {
+  
+  // 距離が近い順にソート
+  closestToilets.sort((a, b) => {
+    if (a.distance < b.distance) {
+      return -1;
+    }
+    if (a.distance > b.distance) {
+      return 1;
+    }
+    return 0;
+  });
+
   return (
     <div>
         <ul>

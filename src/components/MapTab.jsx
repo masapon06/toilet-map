@@ -5,7 +5,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import AccessibleForwardIcon from '@material-ui/icons/AccessibleForward';
 
 const TabWrapper = styled.div`
-  width: 33.33vw; 
+  width: 50vw; 
 `; // TODO: オーバーレイリストボタン実装後50vwに修正
 
 const IconWrappr = styled.div`
@@ -14,13 +14,13 @@ const IconWrappr = styled.div`
 
 export const MapTab = ({
     posts,
-    onClickMapTab
+    onClickMapTab,
 }) => {
-    return (    
-        <TabWrapper onClick={() => onClickMapTab(posts)}>
+    return (
+        <TabWrapper >
             <IconWrappr>
                 <IconButton fontSize="large" color="secondary" aria-label="favorite" className="map" >
-                    <FavoriteIcon />
+                    <FavoriteIcon onClick={() => onClickMapTab(posts)}/>
                 </IconButton>
             </IconWrappr>
         </TabWrapper> 

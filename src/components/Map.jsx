@@ -4,26 +4,17 @@ import { mapStyles } from '../mapConfig.js';
 // import { PlaceInfo } from './PlaceInfo.jsx'
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 import styled from 'styled-components';
+import './Map.css';
 
-import { HeaderWrapper } from "./Header.jsx";
-
-const markerLabel = {
-  color: "white",
-  fontFamily: "sans-serif",
-  fontSize: "15px",
-  fontWeight: "100",
-  text: "ト",
-};
+import SearchIcon from '../images/searchIcon.svg';
 
 const libraries = ["places"];
+
 const mapContainerStyle = {
   height: "70vh",
   width: "100%",
 };
 
-const MapWrapper = styled.div`
-  position: fixed;
-`;
 /*
 const center = {
   lat: 37.912039,
@@ -39,6 +30,7 @@ const options = {
   disableDefaultUI: true,
   // デフォルトUI（衛星写真オプションなど）をキャンセルします。
   zoomControl: false,
+  scrollwheel: true,
 };
 
 export const Map = ({
@@ -52,7 +44,7 @@ export const Map = ({
   // state
   const [selected, setSelected] = useState(null);
   const [location, setLocation] = useState({
-    locationName: '目的地を入力してください',
+    locationName: '',
     center: {
       lat: 37.912039,
       lng: 139.061775,
@@ -103,70 +95,69 @@ export const Map = ({
   return (
     
     <Fragment>
-    <HeaderWrapper>
-      <input type='text' onChange={(e) => changeLocationName(e)} value={location.locationName} onKeyPress={(e) => changeLocationName(e)}/>
-    </HeaderWrapper>
-    <GoogleMap
-      id="map"
-      mapContainerStyle={mapContainerStyle}
-      zoom={15}
-　　　　　// デフォルトズーム倍率を指定します。
-      center={location.center}
-　　　　　// 札幌周辺にデフォルトのセンターを指定しました。
-      options={options}
-      onLoad={onMapLoad}
-    >
+    <div className="map-outter">
+      <div className="search-box-container">
+        <div className="input-wrapper">
+          <img src={SearchIcon} id="search-icon" onClick={()=>geocode()} />
+          <input id="search-input" type='text' onChange={(e) => changeLocationName(e)} placeholder="目的地を入力してください" value={location.locationName} onKeyPress={(e) => changeLocationName(e)}/>
+        </div>
+      </div>
+          <div className="map-inner">
+            <GoogleMap
+            id="map"
+            mapContainerStyle={mapContainerStyle}
+            zoom={15}
+      　　　　　// デフォルトズーム倍率を指定します。
+            center={location.center}
+      　　　　　// 札幌周辺にデフォルトのセンターを指定しました。
+            options={options}
+            onLoad={onMapLoad}
+            >
 
-      {posts.map(marker => (
-        <Marker
-          key={marker.latitude}
-          position={{
-            lat: Number(marker.latitude),
-            lng: Number(marker.longitude),
-          }}
-          onClick={() => {
-            setSelected(marker);
-            // クリックで<InfoWindow>が描画されます。
-          }}
-          // label={markerLabel}
-          /*
-          icon={{
-            url: "url of icon",
-            origin: new window.google.maps.Point(0, 0),
-            anchor: new window.google.maps.Point(15, 15),
-            scaledSize: new window.google.maps.Size(30, 30),
-            // ここでアイコン表示の設定ができます。
-          }}
-          */
-        />
-        ))}
+            {posts.map(marker => (
+              <Marker
+                key={marker.latitude}
+                position={{
+                  lat: Number(marker.latitude),
+                  lng: Number(marker.longitude),
+                }}
+                onClick={() => {
+                  setSelected(marker);
+                  // クリックで<InfoWindow>が描画されます。
+                }}
+                // label={markerLabel}
+                /*
+                icon={{
+                  url: "url of icon",
+                  origin: new window.google.maps.Point(0, 0),
+                  anchor: new window.google.maps.Point(15, 15),
+                  scaledSize: new window.google.maps.Size(30, 30),
+                  // ここでアイコン表示の設定ができます。
+                }}
+                */
+              />
+              ))}
 
-      {selected ? (
-        // MarkerにマウスオーバーされたときにInfoWindowが表示されます。
-        <InfoWindow
-          position={{
-            lat: Number(selected.latitude),
-            lng: Number(selected.longitude),
-          }}
-          onCloseClick={() => {
-            setSelected(null);
-          }}
-        >
-          <div>{selected.info}</div>
-        </InfoWindow>
-        ) : null}
+            {selected ? (
+              // MarkerにマウスオーバーされたときにInfoWindowが表示されます。
+              <InfoWindow
+                position={{
+                  lat: Number(selected.latitude),
+                  lng: Number(selected.longitude),
+                }}
+                onCloseClick={() => {
+                  setSelected(null);
+                }}
+              >
+                <div className="info-wrapper">
+                  <a className="info-link" href={`https://maps.apple.com/maps?ll=${selected.latitude},${selected.longitude}`}>{selected.info}</a>
+                </div>
+              </InfoWindow>
+              ) : null}
 
-      { /*posts.map(marker => (
-        <DistanceMatrixService
-        options={{
-          destinations: [{ lat: 37.912039, lng: 139.061775 }],
-          origins: [{ lat: 37.9133196, lng: 139.0582136 }],
-          travelMode: "DRIVING",
-        }}
-          callback = {(response) => {console.log(response)}}
-        />
-      ))*/ }
-      </GoogleMap>
+            </GoogleMap>
+          </div>
+    </div>
     </Fragment>
   );
 }

@@ -1,0 +1,224 @@
+
+/*---------------------ヘッダーコンポーネント--------------------*/
+/*
+共通トーン： #0080c9
+*/
+
+.title-wrapper {
+    color: #0080c9;
+    height: 44px;
+    flex-shrink: 0;
+    display: flex;
+    position: relative;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.title {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    color: rgb(0, 0, 0);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 1;
+    transition: opacity 0.2s ease 0s;
+}
+
+.header-wrapper {
+    overflow: hidden;
+    margin-top: 44px;
+    width: 100vw;
+}
+
+.switch-wrapper {
+    height: 29px;
+    min-height: 29px;
+    border-width: 1px;
+    border-color: #0080c9;
+    border-radius: 4px;
+    border-style: solid;
+    display: flex;
+    justify-content: stretch;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    margin: 0px 16px 16px;
+}
+
+.map-on-button {
+    min-width: 1px;
+    width: 1px;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    color: rgba(255, 255, 255, 0.976);
+    background-color: #0080c9;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.0625rem;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    text-align: center;
+    text-transform: lowercase;
+    font-variant: small-caps;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
+}
+
+.map-off-button {
+    min-width: 1px;
+    width: 1px;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    color: #0080c9;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.0625rem;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    text-align: center;
+    text-transform: lowercase;
+    font-variant: small-caps;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
+}
+
+.list-on-button {
+    min-width: 1px;
+    width: 1px;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    color: rgba(255, 255, 255, 0.976);
+    background-color: #0080c9;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.0625rem;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    text-align: center;
+    text-transform: lowercase;
+    font-variant: small-caps;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
+}
+
+.list-off-button {
+    min-width: 1px;
+    width: 1px;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    color: #0080c9;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.0625rem;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    text-align: center;
+    text-transform: lowercase;
+    font-variant: small-caps;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
+}
+
+
+/*---------------------マップコンポーネント--------------------*/
+
+/*---サーチボックス---*/
+.search-box-container {
+    padding: 0px 16px 16px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    transform: translateY(0px);
+    pointer-events: auto;
+}
+
+.input-wrapper {
+    color: rgb(0, 0, 0);
+    height: 36px;
+    padding: 0px 12px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.05);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+}
+
+#search-icon {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: inherit;
+    max-height: 1e+07px;
+    outline: none !important;
+    width: 20px;
+    height: 20px;
+}
+
+#search-input {
+    border: 0px;
+    background: none;
+
+
+
+
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    color: rgb(0, 0, 0);
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    margin-left: 8px;
+}
+
+/*---マップ---*/
+.map-outter {
+    position: fixed;
+    top: 20vh;
+}
+
+.map-inner {
+    width: 100vw;
+    height: 100vh;
+}
+
+.info-link {
+    padding: 5px;
+    text-align: center;
+    vertical-align:middle;
+    font-size: 16px;
+    line-height: 19px;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    color: rgb(0, 0, 0);
+}
+
+.info-wrapper {
+    padding: 5px;
+}
