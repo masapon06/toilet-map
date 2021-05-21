@@ -15,16 +15,23 @@ export const Closest = ({closestToilets}) => {
   });
 
   return (
-    <div className="container">
-    {
-        closestToilets.map(post => (
-          <div className="posts-index-item" >
-            <a className="post-title">{post.info}</a> <br></br>
-            <a className="small-text">{`${post.distance} km先`}</a>
-          </div>
+    <>
+      <div className="closest-title-wrapper">
+        <div className="title">
+          一番近いトイレ
+        </div>
+      </div>
+      <div className="closest-container">
+        {
+          closestToilets.map(post => (
+            <div className="posts-index-item" >
+              <a className="post-title">{post.info}</a> <br></br>
+              <a className="small-text">{`${post.distance} km先`}</a>
+            </div>
+            )
           )
-        )
-    }
-    </div>
+        }
+      </div>
+    </>
 )
 }

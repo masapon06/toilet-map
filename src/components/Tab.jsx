@@ -19,7 +19,7 @@ const FooterWrapper = styled.div`
   padding: ;
   border-top: thin solid #A9A9A9;
   width: 100%;
-  height: "20vh";
+  height: 8vh;
   position: fixed;
   bottom: 0;
   background-color: #ffffff;

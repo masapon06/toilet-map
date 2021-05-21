@@ -11,7 +11,7 @@ import SearchIcon from '../images/searchIcon.svg';
 const libraries = ["places"];
 
 const mapContainerStyle = {
-  height: "70vh",
+  height: "75vh",
   width: "100%",
 };
 
