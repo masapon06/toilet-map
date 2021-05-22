@@ -18,7 +18,7 @@ function App() {
         <Route
           exact
           path="/">
-          <Screen />          
+          <Screen />
         </Route>
       </Switch>
     </Router>

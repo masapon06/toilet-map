@@ -69,12 +69,12 @@ export const Screen = () => {
   };
   */
 
-  /* こちらで現在地取得。ひとまず後回し。SSL署名とってから実装する。
+  // こちらで現在地取得。ひとまず後回し。SSL署名とってから実装する。
   navigator?.geolocation.getCurrentPosition(({coords: {latitude: lat, longitude: lng}}) => {
     const pos = {lat, lng}
     console.log(pos);
+    currentPosition = pos;
   })
-  */
 
   useEffect(() => {
     axios.get(apiUrl) // 大阪の場合: apiUrl -> osakaLodUrl
