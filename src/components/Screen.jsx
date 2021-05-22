@@ -73,7 +73,7 @@ export const Screen = () => {
   navigator?.geolocation.getCurrentPosition(({coords: {latitude: lat, longitude: lng}}) => {
     const pos = {lat, lng}
     console.log(pos);
-    currentPosition = pos;
+    currentPosition = {lat: pos.lat, lng: pos.lng};
   })
 
   useEffect(() => {
