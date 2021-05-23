@@ -25,16 +25,16 @@ Node.js/React.js/AWS EC2/Route53/Nginx
 
 ## デモ
 - 目的地マップ画面
-<img width="600" alt="purpose-site-map" src="https://user-images.githubusercontent.com/78773789/119251159-f9530200-bbdf-11eb-9a4e-015e8d09fa67.PNG">
+<img width="250" alt="purpose-site-map" src="https://user-images.githubusercontent.com/78773789/119251159-f9530200-bbdf-11eb-9a4e-015e8d09fa67.PNG">
 
 - 目的地検索後画面
-<img width="600" alt="purpose-site-search" src="https://user-images.githubusercontent.com/78773789/119251233-96ae3600-bbe0-11eb-81a2-e49418266e9e.PNG">
+<img width="250" alt="purpose-site-search" src="https://user-images.githubusercontent.com/78773789/119251233-96ae3600-bbe0-11eb-81a2-e49418266e9e.PNG">
 
 - 目的地リスト表示画面
-<img width="600" alt="purpose-site-list" src="https://user-images.githubusercontent.com/78773789/119251257-ba717c00-bbe0-11eb-952b-c7c24867948e.PNG">
+<img width="250" alt="purpose-site-list" src="https://user-images.githubusercontent.com/78773789/119251257-ba717c00-bbe0-11eb-952b-c7c24867948e.PNG">
 
 - 現在地近辺トイレ早見画面
-<img width="600" alt="current-place" src="https://user-images.githubusercontent.com/78773789/119251293-ea208400-bbe0-11eb-826b-6618812db031.PNG">
+<img width="250" alt="current-place" src="https://user-images.githubusercontent.com/78773789/119251293-ea208400-bbe0-11eb-826b-6618812db031.PNG">
 
 - ファーストビュー画面
-<img width="600" alt="about" src="https://user-images.githubusercontent.com/78773789/119251351-13411480-bbe1-11eb-8380-2185f07e85e7.PNG">
+<img width="250" alt="about" src="https://user-images.githubusercontent.com/78773789/119251351-13411480-bbe1-11eb-8380-2185f07e85e7.PNG">
