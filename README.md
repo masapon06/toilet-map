@@ -22,3 +22,19 @@ Node.js/React.js/AWS EC2/Route53/Nginx
 
 ## 制作背景
 知り合いのベビーカーを使っている方が、でかけた先でベビーカーで使えるトイレがなくて困ったというエピソードを話しているのを聞きました。そこで調べてみると、ベビーカーの利用者は多機能トイレを普段つかっており、多機能トイレは数が少ない上車椅子利用者やオストメイトの方や、子連れの方など、様々な方が利用するため大変混雑しやすいという課題があることがわかりました。さらには、現行のアプリが使いにくいこともわかりました。そこで、多機能トイレのオープンデータをデータプラットフォームに登録し、開発したのが本アプリです。目的地周辺に多機能トイレがあるか・トイレが混雑していた場合に周囲に代替のトイレがあるかを簡単に検索することができます。
+
+## デモ
+- 目的地マップ画面
+<img width="600" alt="purpose-site-map" src="https://user-images.githubusercontent.com/78773789/119251159-f9530200-bbdf-11eb-9a4e-015e8d09fa67.PNG">
+
+- 目的地検索後画面
+<img width="600" alt="purpose-site-search" src="https://user-images.githubusercontent.com/78773789/119251233-96ae3600-bbe0-11eb-81a2-e49418266e9e.PNG">
+
+- 目的地リスト表示画面
+<img width="600" alt="purpose-site-list" src="https://user-images.githubusercontent.com/78773789/119251257-ba717c00-bbe0-11eb-952b-c7c24867948e.PNG">
+
+- 現在地近辺トイレ早見画面
+<img width="600" alt="current-place" src="https://user-images.githubusercontent.com/78773789/119251293-ea208400-bbe0-11eb-826b-6618812db031.PNG">
+
+- ファーストビュー画面
+<img width="600" alt="about" src="https://user-images.githubusercontent.com/78773789/119251351-13411480-bbe1-11eb-8380-2185f07e85e7.PNG">
