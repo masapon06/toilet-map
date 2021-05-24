@@ -68,6 +68,7 @@ export const Tab = ({
     
     return (
     <>
+    <div className="responsive">
     <FooterWrapper>
         <BottomNavigation
         value={value}
@@ -89,6 +90,7 @@ export const Tab = ({
             />
         </BottomNavigation>
     </FooterWrapper>
+    </div>
     </>
     )
 };

@@ -12,7 +12,7 @@ export const LandingScreen = () => {
         </div>
         <div className="lp-text-wrapper">
             <p className="lp-text">ベビーカーや車椅子で外出したとき、トイレがない。使いたいのに混んでいる。そんなとき、広いトイレを素早く探すことができるのが本アプリケーションです。</p>
-            <p className="lp-text">スマホのホーム画面に追加してお使いください。</p>
+            <p className="lp-text">スマホのホーム画面に追加してお使いください。(当アプリはスマートフォン専用となっています。)</p>
         </div>
     </div>
     </div>
