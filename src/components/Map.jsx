@@ -3,6 +3,17 @@ import { makeStyles } from '@mui/styles';
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { LatLng } from "leaflet";
 import "leaflet/dist/leaflet.css";
+import L from 'leaflet';
+ 
+const placeholder = L.icon({
+  iconUrl: 'placeholder.png',
+  iconSize: [40, 40],
+  iconAnchor: [13, 41],
+  popupAnchor: [7, -40],
+  // shadowUrl: 'favicon2.png',
+  shadowSize: [30, 60],
+  shadowAnchor: [8, 60]
+});
 
 const useStyles = makeStyles({
   root: {
@@ -14,23 +25,28 @@ const useStyles = makeStyles({
   }
 });
 
-export const Map = () => {
+export const Map = ({posts}) => {
 
   const classes = useStyles()
 
-  const position = new LatLng(51.505, -0.09);
+  const position = new LatLng(37.9120388, 139.0595863);
   return (
     <div className={classes.root}>
-      <MapContainer center={position} zoom={13} scrollWheelZoom={false} className={classes.leafletContainer}>
+      <MapContainer center={position} zoom={13} className={classes.leafletContainer}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={position}>
+        {posts.map(marker => (
+          <Marker position={new LatLng(Number(marker.latitude), Number(marker.longitude))} icon={placeholder}>
           <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
+            ここから{marker.distance}km
+            <br/><br/>
+            {marker.info}
           </Popup>
-        </Marker>
+          </Marker>
+        ))
+        }
       </MapContainer>
     </div>
   );
