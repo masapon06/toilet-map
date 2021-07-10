@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   },
   leafletContainer: {
     width: '100vw',
-    height: '75vh',
+    height: '81vh',
   }
 });
 
@@ -32,7 +32,7 @@ export const Map = ({posts}) => {
   const position = new LatLng(37.9120388, 139.0595863);
   return (
     <div className={classes.root}>
-      <MapContainer center={position} zoom={13} className={classes.leafletContainer}>
+      <MapContainer center={position} zoom={13} zoomControl={false}className={classes.leafletContainer}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
