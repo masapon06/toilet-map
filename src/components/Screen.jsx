@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import './Screen.css'
 
 // material-ui
 import styled from 'styled-components';
@@ -111,106 +112,108 @@ export const Screen = () => {
 
 
   return (
-    <>
-    {
-    switchScreen.isVisibleLandingScreen && 
-      <LandingScreen/>
-    }
-    {
-    switchScreen.isVisibleList &&
-    <ContentWrapper>
-    <Header
-    switchScreen = {switchScreen}
-    onClickMapButton={        
-      (posts) => setScreen({
-          isVisibleMap: true,
-          isVisibleList: false,
+    <dev className="responsive">
+      <>
+      {
+      switchScreen.isVisibleLandingScreen && 
+        <LandingScreen/>
+      }
+      {
+      switchScreen.isVisibleList &&
+      <ContentWrapper>
+      <Header
+      switchScreen = {switchScreen}
+      onClickMapButton={        
+        (posts) => setScreen({
+            isVisibleMap: true,
+            isVisibleList: false,
+            isVisibleClosestToilets: false,
+            isVisibleLandingScreen: false,
+            posts: posts,
+            })
+      }
+      onClickListButton={        
+        (posts) => setScreen({
+          isVisibleMap: false,
+          isVisibleList: true,
           isVisibleClosestToilets: false,
           isVisibleLandingScreen: false,
           posts: posts,
           })
-    }
-    onClickListButton={        
-      (posts) => setScreen({
-        isVisibleMap: false,
-        isVisibleList: true,
-        isVisibleClosestToilets: false,
-        isVisibleLandingScreen: false,
-        posts: posts,
-        })
-    }
-    />
-    <List
-    posts={switchScreen.posts}
-    />
-    </ContentWrapper>
-    }
-  
-    {
-    switchScreen.isVisibleMap && 
-    <ContentWrapper>
-    <Header
-    switchScreen = {switchScreen}
-    onClickMapButton={        
-      (posts) => setScreen({
-          isVisibleMap: true,
-          isVisibleList: false,
+      }
+      />
+      <List
+      posts={switchScreen.posts}
+      />
+      </ContentWrapper>
+      }
+    
+      {
+      switchScreen.isVisibleMap && 
+      <ContentWrapper>
+      <Header
+      switchScreen = {switchScreen}
+      onClickMapButton={        
+        (posts) => setScreen({
+            isVisibleMap: true,
+            isVisibleList: false,
+            isVisibleClosestToilets: false,
+            isVisibleLandingScreen: false,
+            posts: posts,
+            })
+      }
+      onClickListButton={        
+        (posts) => setScreen({
+          isVisibleMap: false,
+          isVisibleList: true,
           isVisibleClosestToilets: false,
           isVisibleLandingScreen: false,
           posts: posts,
           })
-    }
-    onClickListButton={        
-      (posts) => setScreen({
-        isVisibleMap: false,
-        isVisibleList: true,
-        isVisibleClosestToilets: false,
-        isVisibleLandingScreen: false,
-        posts: posts,
-        })
-    }
-    />
-    <Map
-    posts={switchScreen.posts} // TODO: ここのposts は、'post' stateからでいい気がするのでそのように変更
-    />
-    </ContentWrapper>
-    }
+      }
+      />
+      <Map
+      posts={switchScreen.posts} // TODO: ここのposts は、'post' stateからでいい気がするのでそのように変更
+      />
+      </ContentWrapper>
+      }
 
-    {
-    switchScreen.isVisibleClosestToilets && 
-    <Closest
-    closestToilets={closestToilets} // TODO: ここのposts は、'post' stateからでいい気がするのでそのように変更
-    />
-    }
-    <Tab
-    posts = {posts}
-    onClickMapTab={
-    (posts) => setScreen({
-        isVisibleMap: true,
+      {
+      switchScreen.isVisibleClosestToilets && 
+      <Closest
+      closestToilets={closestToilets} // TODO: ここのposts は、'post' stateからでいい気がするのでそのように変更
+      />
+      }
+      <Tab
+      posts = {posts}
+      onClickMapTab={
+      (posts) => setScreen({
+          isVisibleMap: true,
+          isVisibleList: false,
+          isVisibleClosestToilets: false,
+          isVisibleLandingScreen: false,
+          posts: posts,
+          })
+      }
+      onClickClosestTab={() => setScreen({
+        ...switchScreen,
+        isVisibleMap: false,
+        isVisibleList: false,
+        isVisibleClosestToilets: true,
+        isVisibleLandingScreen: false,
+        })
+      }
+      onClickLandingTab={() => setScreen({
+        ...switchScreen,
+        isVisibleMap: false,
         isVisibleList: false,
         isVisibleClosestToilets: false,
-        isVisibleLandingScreen: false,
-        posts: posts,
-        })
-    }
-    onClickClosestTab={() => setScreen({
-      ...switchScreen,
-      isVisibleMap: false,
-      isVisibleList: false,
-      isVisibleClosestToilets: true,
-      isVisibleLandingScreen: false,
+        isVisibleLandingScreen: true,
       })
-    }
-    onClickLandingTab={() => setScreen({
-      ...switchScreen,
-      isVisibleMap: false,
-      isVisibleList: false,
-      isVisibleClosestToilets: false,
-      isVisibleLandingScreen: true,
-    })
-    }
-    />
-    </>
+      }
+      />
+      </>
+    </dev>
   );
 }
 

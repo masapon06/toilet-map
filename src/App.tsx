@@ -18,9 +18,7 @@ function App() {
         <Route
           exact
           path="/">
-          <Screen 
-          className="responsive"
-          />
+          <Screen/>
         </Route>
       </Switch>
     </Router>
