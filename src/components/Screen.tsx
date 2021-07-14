@@ -27,9 +27,9 @@ const places = [
   { info: "info1", location: { lat: 43.048225, lng: 141.49701 } }
 ];
 
-const initialToiletsState = [];
+const initialToiletsState: any = [];
 
-const initialClosestsState = [];
+const initialClosestsState: any = [];
 
 const initialScreenState = {
   isVisibleMap: false,
@@ -39,12 +39,15 @@ const initialScreenState = {
   posts: null,
 };
 
-const currentPosition = {
+let currentPosition: {
+  lat: number
+  lng: number
+} = {
   lat: 37.912039,
   lng: 139.061775,
 }
 
-function distance(lat1, lng1, lat2, lng2) {
+function distance(lat1: number, lng1: number, lat2: number, lng2: number) {
   lat1 *= Math.PI / 180;
   lng1 *= Math.PI / 180;
   lat2 *= Math.PI / 180;
@@ -72,7 +75,10 @@ export const Screen = () => {
 
   // こちらで現在地取得。ひとまず後回し。SSL署名とってから実装する。
   navigator?.geolocation.getCurrentPosition(({coords: {latitude: lat, longitude: lng}}) => {
-    const pos = {lat, lng}
+    const pos: {
+      lat: number
+      lng: number
+    } = {lat, lng}
     console.log(pos);
     currentPosition = {lat: pos.lat, lng: pos.lng};
   })
@@ -80,7 +86,7 @@ export const Screen = () => {
   useEffect(() => {
     axios.get(apiUrl) // 大阪の場合: apiUrl -> osakaLodUrl
     .then(res => {
-      res.data.results.bindings.forEach(function(result) {
+      res.data.results.bindings.forEach(function(result: any) {
         let dist_num = Math.floor(distance(currentPosition.lat, currentPosition.lng, result.latitude.value, result.longitude.value) * 100) / 100;
         let dist = String(dist_num);
         // 近いトイレをstateとして保存
@@ -112,7 +118,7 @@ export const Screen = () => {
 
 
   return (
-    <dev className="responsive">
+    <div className="responsive">
       <>
       {
       switchScreen.isVisibleLandingScreen && 
@@ -124,7 +130,7 @@ export const Screen = () => {
       <Header
       switchScreen = {switchScreen}
       onClickMapButton={        
-        (posts) => setScreen({
+        (posts: any) => setScreen({
             isVisibleMap: true,
             isVisibleList: false,
             isVisibleClosestToilets: false,
@@ -133,7 +139,7 @@ export const Screen = () => {
             })
       }
       onClickListButton={        
-        (posts) => setScreen({
+        (posts: any) => setScreen({
           isVisibleMap: false,
           isVisibleList: true,
           isVisibleClosestToilets: false,
@@ -154,7 +160,7 @@ export const Screen = () => {
       <Header
       switchScreen = {switchScreen}
       onClickMapButton={        
-        (posts) => setScreen({
+        (posts: any) => setScreen({
             isVisibleMap: true,
             isVisibleList: false,
             isVisibleClosestToilets: false,
@@ -163,7 +169,7 @@ export const Screen = () => {
             })
       }
       onClickListButton={        
-        (posts) => setScreen({
+        (posts: any) => setScreen({
           isVisibleMap: false,
           isVisibleList: true,
           isVisibleClosestToilets: false,
@@ -187,7 +193,7 @@ export const Screen = () => {
       <Tab
       posts = {posts}
       onClickMapTab={
-      (posts) => setScreen({
+      (posts: any) => setScreen({
           isVisibleMap: true,
           isVisibleList: false,
           isVisibleClosestToilets: false,
@@ -213,7 +219,7 @@ export const Screen = () => {
       }
       />
       </>
-    </dev>
+    </div>
   );
 }
 
