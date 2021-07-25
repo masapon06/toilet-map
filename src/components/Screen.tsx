@@ -26,22 +26,21 @@ interface PlaceType {
   placeName: string,
   distance: string,
 }
+
 const initialToiletsState: PlaceType[] = [];
-
 const initialClosestsState: PlaceType[] = [];
-
 const initialScreenState: {
   isVisibleMap: boolean,
   isVisibleList: boolean,
   isVisibleClosestToilets: boolean,
   isVisibleLandingScreen: boolean,
-  posts: any,
+  places: PlaceType[],
 } = {
   isVisibleMap: false,
   isVisibleList: false,
   isVisibleClosestToilets: false,
   isVisibleLandingScreen: true,
-  posts: null,
+  places: [],
 };
 
 let currentPosition: {
@@ -114,8 +113,6 @@ export const Screen = () => {
     fetchApi()
   }, [])
 
-
-
   return (
     <div className="responsive">
       <>
@@ -124,31 +121,32 @@ export const Screen = () => {
         <LandingScreen/>
       }
       {
+      // TODO: ここHeaderを何度も書くのは冗長なので共通化する
       switchScreen.isVisibleList &&
       <ContentWrapper>
       <Header
       switchScreen = {switchScreen}
       onClickMapButton={        
-        (posts: any) => setScreen({ // TODO: propsの型を書く
+        () => setScreen({
             isVisibleMap: true,
             isVisibleList: false,
             isVisibleClosestToilets: false,
             isVisibleLandingScreen: false,
-            posts: posts,
+            places: places,
             })
       }
       onClickListButton={        
-        (posts: any) => setScreen({
+        () => setScreen({
           isVisibleMap: false,
           isVisibleList: true,
           isVisibleClosestToilets: false,
           isVisibleLandingScreen: false,
-          posts: posts,
+          places: places,
           })
       }
       />
       <List
-      posts={switchScreen.posts}
+      posts={switchScreen.places}
       />
       </ContentWrapper>
       }
@@ -159,26 +157,26 @@ export const Screen = () => {
       <Header
       switchScreen = {switchScreen}
       onClickMapButton={        
-        (posts: any) => setScreen({
+        () => setScreen({
             isVisibleMap: true,
             isVisibleList: false,
             isVisibleClosestToilets: false,
             isVisibleLandingScreen: false,
-            posts: posts,
+            places: places,
             })
       }
       onClickListButton={        
-        (posts: any) => setScreen({
+        () => setScreen({
           isVisibleMap: false,
           isVisibleList: true,
           isVisibleClosestToilets: false,
           isVisibleLandingScreen: false,
-          posts: posts,
+          places: places,
           })
       }
       />
       <Map
-      posts={switchScreen.posts} // TODO: ここのposts は、'post' stateからでいい気がするのでそのように変更
+      posts={switchScreen.places} // TODO: ここのposts は、'post' stateからでいい気がするのでそのように変更
       />
       </ContentWrapper>
       }
@@ -192,12 +190,12 @@ export const Screen = () => {
       <Tab
       posts = {places}
       onClickMapTab={
-      (posts: any) => setScreen({
+      (places: PlaceType[]) => setScreen({
           isVisibleMap: true,
           isVisibleList: false,
           isVisibleClosestToilets: false,
           isVisibleLandingScreen: false,
-          posts: posts,
+          places: places,
           })
       }
       onClickClosestTab={() => setScreen({
