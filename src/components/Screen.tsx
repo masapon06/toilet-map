@@ -20,7 +20,8 @@ const ContentWrapper = styled.div`
  padding: 10vh 0vh 10vh 0vh;
 `;
 
-interface PlaceType {
+// TODO: ファイル分ける
+export interface PlaceType {
   latitude: number,
   longitude: number,
   placeName: string,
@@ -146,7 +147,7 @@ export const Screen = () => {
       }
       />
       <List
-      posts={switchScreen.places}
+      places={switchScreen.places}
       />
       </ContentWrapper>
       }
