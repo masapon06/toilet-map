@@ -6,7 +6,7 @@ import './Screen.css'
 import styled from 'styled-components';
 
 // 各種コンポーネント
-import { List } from "./List.jsx";
+import { List } from "./List";
 import { Map } from "./Map.jsx";
 import { Closest } from "./Closest.jsx";
 import { Header } from "./Header.jsx";
