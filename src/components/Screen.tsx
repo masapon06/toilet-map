@@ -8,7 +8,7 @@ import styled from 'styled-components';
 // 各種コンポーネント
 import { List } from "./List";
 import { Map } from "./Map.jsx";
-import { Closest } from "./Closest.jsx";
+import { Closest } from "./Closest";
 import { Header } from "./Header.jsx";
 import { Tab } from "./Tab.jsx";
 import { LandingScreen } from "./LandingScreen.jsx";
@@ -185,7 +185,7 @@ export const Screen = () => {
       {
       switchScreen.isVisibleClosestToilets && 
       <Closest
-      closestToilets={closestToilets} // TODO: ここのposts は、'post' stateからでいい気がするのでそのように変更
+      places={closestToilets}
       />
       }
       <Tab
