@@ -14,7 +14,13 @@ const HeaderWrapper = styled.div`
   background-color: #ffffff;
 `;
 
-export const Header = ({
+interface HeaderProps {
+  switchScreen: any
+  onClickMapButton: any
+  onClickListButton: any
+}
+
+export const Header: React.FC<HeaderProps> = ({
   switchScreen,
   onClickMapButton,
   onClickListButton,
