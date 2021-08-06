@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Box, IconButton } from '@material-ui/core';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import { ScreenType } from './Screen';
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -15,9 +14,9 @@ const HeaderWrapper = styled.div`
 `;
 
 interface HeaderProps {
-  switchScreen: any
-  onClickMapButton: any
-  onClickListButton: any
+  switchScreen: ScreenType
+  onClickMapButton: () => void
+  onClickListButton: () => void
 }
 
 export const Header: React.FC<HeaderProps> = ({

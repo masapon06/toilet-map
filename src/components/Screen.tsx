@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import { List } from "./List";
 import { Map } from "./Map.jsx";
 import { Closest } from "./Closest";
-import { Header } from "./Header.jsx";
+import { Header } from "./Header";
 import { Tab } from "./Tab.jsx";
 import { LandingScreen } from "./LandingScreen.jsx";
 
@@ -28,15 +28,17 @@ export interface PlaceType {
   distance: string,
 }
 
-const initialToiletsState: PlaceType[] = [];
-const initialClosestsState: PlaceType[] = [];
-const initialScreenState: {
+export interface ScreenType {
   isVisibleMap: boolean,
   isVisibleList: boolean,
   isVisibleClosestToilets: boolean,
   isVisibleLandingScreen: boolean,
   places: PlaceType[],
-} = {
+}
+
+const initialToiletsState: PlaceType[] = [];
+const initialClosestsState: PlaceType[] = [];
+const initialScreenState: ScreenType = {
   isVisibleMap: false,
   isVisibleList: false,
   isVisibleClosestToilets: false,
