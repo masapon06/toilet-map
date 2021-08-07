@@ -35,7 +35,7 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="all-wrapper">
               <div className="switch-wrapper">
                 { switchScreen.isVisibleList &&
-                <div className="map-off-button" onClick={() => onClickMapButton(switchScreen.posts)}>マップで表示</div>
+                <div className="map-off-button" onClick={() => onClickMapButton()}>マップで表示</div>
                 }
                 { switchScreen.isVisibleList && 
                 <div className="list-on-button">リストで表示</div>
@@ -44,7 +44,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <div className="map-on-button">マップで表示</div>
                 }
                 { switchScreen.isVisibleMap && 
-                <div className="list-off-button" onClick={() => onClickListButton(switchScreen.posts)}>リストで表示</div>
+                <div className="list-off-button" onClick={() => onClickListButton()}>リストで表示</div>
                 }
               </div>
             </div>
