@@ -1,7 +1,6 @@
-import React from "react";
 import QR from "../images/QR_895647.png";
 
-export const LandingScreen = () => {
+export const LandingScreen: React.FC = () => {
 
   return (
     <div className="header-bg">
