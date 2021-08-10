@@ -10,7 +10,7 @@ import { List } from "./List";
 import { Map } from "./Map.jsx";
 import { Closest } from "./Closest";
 import { Header } from "./Header";
-import { Tab } from "./Tab.jsx";
+import { Tab } from "./Tab";
 import { LandingScreen } from "./FirstView";
 
 // APIエンドポイント

@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { IconButton } from '@material-ui/core';
-import AccessibleForwardIcon from '@material-ui/icons/AccessibleForward';
 
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import Icon from '@material-ui/core/Icon';
 import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
@@ -34,14 +30,12 @@ const IconWrappr = styled.div`
 `;
 
 /*------------タブのスタイル----------*/
+// TODO: themeをコンポーネントレベルで使うのはよくないのでファイル分ける
 const theme = createMuiTheme({
     palette: {
       primary: {
         main: '#0080c9',
       },
-    },
-    typography: {
-      useNextVariants: true,
     },
   });
   
@@ -51,20 +45,18 @@ const theme = createMuiTheme({
     },
   };
 
+interface TabProps {
+  posts: any
+  onClickMapTab: any
+  onClickClosestTab: any
+  onClickLandingTab: any
+}
+
 /*------------タブコンポーネント----------*/
-export const Tab = ({
-    posts,
-    onClickMapTab,
-    onClickClosestTab,
-    onClickLandingTab,
-}) => {
+export const Tab: React.FC<TabProps> = props => {
+    const { posts, onClickMapTab, onClickClosestTab, onClickLandingTab } = props
 
     const [value, setValue] = useState('使い方')
-
-    const handleChange = () => {
-        setValue( {value} );
-      }
-
     
     return (
     <>
