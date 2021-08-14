@@ -187,35 +187,34 @@ export const Screen = () => {
       {
       switchScreen.isVisibleClosestToilets && 
       <Closest
-      places={closestToilets}
+        places={closestToilets}
       />
       }
       <Tab
-      posts = {places}
-      onClickMapTab={
-      (places: PlaceType[]) => setScreen({
+        posts = {places}
+        onClickMapTab={() => setScreen({
+          ... switchScreen,
           isVisibleMap: true,
           isVisibleList: false,
           isVisibleClosestToilets: false,
           isVisibleLandingScreen: false,
-          places: places,
-          })
-      }
-      onClickClosestTab={() => setScreen({
-        ...switchScreen,
-        isVisibleMap: false,
-        isVisibleList: false,
-        isVisibleClosestToilets: true,
-        isVisibleLandingScreen: false,
         })
       }
-      onClickLandingTab={() => setScreen({
-        ...switchScreen,
-        isVisibleMap: false,
-        isVisibleList: false,
-        isVisibleClosestToilets: false,
-        isVisibleLandingScreen: true,
-      })
+        onClickClosestTab={() => setScreen({
+          ...switchScreen,
+          isVisibleMap: false,
+          isVisibleList: false,
+          isVisibleClosestToilets: true,
+          isVisibleLandingScreen: false,
+        })
+      }
+        onClickLandingTab={() => setScreen({
+          ...switchScreen,
+          isVisibleMap: false,
+          isVisibleList: false,
+          isVisibleClosestToilets: false,
+          isVisibleLandingScreen: true,
+        })
       }
       />
       </>

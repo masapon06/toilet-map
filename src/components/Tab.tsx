@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import { createMuiTheme } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import RestoreIcon from '@material-ui/icons/Restore';
@@ -19,14 +18,6 @@ const FooterWrapper = styled.div`
   position: fixed;
   bottom: 0;
   background-color: #ffffff;
-`;
-
-const TabWrapper = styled.div`
-  width: 33.33vw; 
-`; // TODO: オーバーレイリストボタン実装後50vwに修正
-
-const IconWrappr = styled.div`
-    text-align: center;
 `;
 
 /*------------タブのスタイル----------*/
@@ -72,7 +63,7 @@ export const Tab: React.FC<TabProps> = props => {
         >
             {/*MEMO: BottomNavigationActionは, BottomNavigation直下じゃないと動作しないので注意*/}
             <BottomNavigationAction label="目的地で検索" icon={<LocationOnIcon />} 
-            onClick={() => onClickMapTab(posts)}
+            onClick={() => onClickMapTab()}
             />
             <BottomNavigationAction label="一番近いトイレ" icon={<RestoreIcon />} 
             onClick={() => onClickClosestTab()}
