@@ -191,7 +191,6 @@ export const Screen = () => {
       />
       }
       <Tab
-        posts = {places}
         onClickMapTab={() => setScreen({
           ... switchScreen,
           isVisibleMap: true,

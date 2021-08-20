@@ -29,15 +29,7 @@ const theme = createMuiTheme({
       },
     },
   });
-  
-  const styles = {
-    root: {
-      width: 500,
-    },
-  };
-
 interface TabProps {
-  posts: any
   onClickMapTab: any
   onClickClosestTab: any
   onClickLandingTab: any
@@ -45,7 +37,7 @@ interface TabProps {
 
 /*------------タブコンポーネント----------*/
 export const Tab: React.FC<TabProps> = props => {
-    const { posts, onClickMapTab, onClickClosestTab, onClickLandingTab } = props
+    const { onClickMapTab, onClickClosestTab, onClickLandingTab } = props
 
     const [value, setValue] = useState('使い方')
     
