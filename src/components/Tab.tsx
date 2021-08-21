@@ -30,9 +30,9 @@ const theme = createMuiTheme({
     },
   });
 interface TabProps {
-  onClickMapTab: any
-  onClickClosestTab: any
-  onClickLandingTab: any
+  onClickMapTab: () => void
+  onClickClosestTab: () => void
+  onClickLandingTab: () => void
 }
 
 /*------------タブコンポーネント----------*/
