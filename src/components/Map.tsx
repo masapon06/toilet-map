@@ -4,13 +4,14 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { LatLng } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import L from 'leaflet';
+import { PlaceType } from './Screen';
  
 const placeholder = L.icon({
   iconUrl: 'placeholder.png',
   iconSize: [40, 40],
   iconAnchor: [13, 41],
   popupAnchor: [7, -40],
-  // shadowUrl: 'favicon2.png',
+  // shadowUrl: '必要であれば'
   shadowSize: [30, 60],
   shadowAnchor: [8, 60]
 });
@@ -25,7 +26,12 @@ const useStyles = makeStyles({
   }
 });
 
-export const Map = ({posts}) => {
+interface MapProps {
+  places: PlaceType[]
+}
+
+export const Map: React.FC<MapProps> = props => {
+  const { places } = props
 
   const classes = useStyles()
 
@@ -37,12 +43,12 @@ export const Map = ({posts}) => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {posts.map(marker => (
-          <Marker position={new LatLng(Number(marker.latitude), Number(marker.longitude))} icon={placeholder}>
+        {places.map(place => (
+          <Marker position={new LatLng(Number(place.latitude), Number(place.longitude))} icon={placeholder}>
           <Popup>
-            ここから{marker.distance}km
+            ここから{place.distance}km
             <br/><br/>
-            {marker.info}
+            {place.placeName}
           </Popup>
           </Marker>
         ))

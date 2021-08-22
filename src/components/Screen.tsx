@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 // 各種コンポーネント
 import { List } from "./List";
-import { Map } from "./Map.jsx";
+import { Map } from "./Map";
 import { Closest } from "./Closest";
 import { Header } from "./Header";
 import { Tab } from "./Tab";
@@ -179,7 +179,7 @@ export const Screen = () => {
       }
       />
       <Map
-      posts={switchScreen.places} // TODO: ここのposts は、'post' stateからでいい気がするのでそのように変更
+        places={switchScreen.places} // TODO: ここのposts は、'post' stateからでいい気がするのでそのように変更
       />
       </ContentWrapper>
       }
