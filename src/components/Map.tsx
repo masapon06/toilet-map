@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback, useRef, useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@mui/styles';
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { LatLng } from "leaflet";
@@ -44,7 +44,7 @@ export const Map: React.FC<MapProps> = props => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {places.map(place => (
-          <Marker position={new LatLng(Number(place.latitude), Number(place.longitude))} icon={placeholder}>
+          <Marker position={new LatLng(place.latitude, place.longitude)} icon={placeholder}>
           <Popup>
             ここから{place.distance}km
             <br/><br/>
