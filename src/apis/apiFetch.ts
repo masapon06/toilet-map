@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { PlaceType } from "../entity/types";
 
 let currentPosition = {
   lat: 37.912039,
@@ -28,8 +29,8 @@ const distance = (lat1: number, lng1: number, lat2: number, lng2: number) => {
 
 export const fetchApi = async () => {
   const results: {
-    closestToilets: any[]
-    toilets: any[]
+    closestToilets: PlaceType[]
+    toilets: PlaceType[]
   } = {
     closestToilets: [],
     toilets: [],

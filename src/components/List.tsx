@@ -1,4 +1,4 @@
-import { PlaceType } from "./Screen"
+import { PlaceType } from "../entity/types";
 
 interface ListProps {
   places: PlaceType[]

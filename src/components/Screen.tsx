@@ -11,26 +11,12 @@ import { Closest } from "./Closest";
 import { Header } from "./Header";
 import { Tab } from "./Tab";
 import { LandingScreen } from "./FirstView";
-import { fetchApi } from "../apis/apiFetch";
+import { fetchApi } from "../apis/APIFetch";
+import { PlaceType, ScreenType } from "../entity/types";
 
 const ContentWrapper = styled.div`
  padding: 10vh 0vh 10vh 0vh;
 `;
-
-// TODO: ファイル分ける
-export interface PlaceType {
-  latitude: number,
-  longitude: number,
-  placeName: string,
-  distance: string,
-}
-
-export interface ScreenType {
-  isVisibleMap: boolean,
-  isVisibleList: boolean,
-  isVisibleClosestToilets: boolean,
-  isVisibleLandingScreen: boolean,
-}
 
 const initialToiletsState: PlaceType[] = [];
 const initialClosestsState: PlaceType[] = [];

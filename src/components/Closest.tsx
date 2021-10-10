@@ -1,5 +1,4 @@
-import { PlaceType } from "./Screen";
-
+import { PlaceType } from "../entity/types";
 interface PropsType {
   places: PlaceType[]
 }
