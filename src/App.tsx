@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 // components
-import { Screen } from './components/Screen.jsx';
+import { Screen } from './components/Screen';
 // import { Tab } from './containers/Tab.jsx';
 
 function App() {
@@ -18,9 +18,7 @@ function App() {
         <Route
           exact
           path="/">
-          <Screen 
-          className="responsive"
-          />
+          <Screen/>
         </Route>
       </Switch>
     </Router>

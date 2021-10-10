@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
-import styled from 'styled-components';
+import { PlaceType } from "../entity/types";
+interface PropsType {
+  places: PlaceType[]
+}
 
-export const Closest = ({closestToilets}) => {
+export const Closest: React.FC<PropsType> = props => {
+  const { places } = props
   
   // 距離が近い順にソート
-  closestToilets.sort((a, b) => {
+  places.sort((a, b) => {
     if (a.distance < b.distance) {
       return -1;
     }
@@ -23,10 +26,10 @@ export const Closest = ({closestToilets}) => {
       </div>
       <div className="closest-container">
         {
-          closestToilets.map(post => (
+          places.map(place => (
             <div className="posts-index-item" >
-              <a className="post-title" href={`http://maps.apple.com/maps?q=${post.info}&ll=${post.latitude},${post.longitude}`}>{post.info}</a> <br></br>
-              <a className="small-text">{`${post.distance} km先`}</a>
+              <a className="post-title" href={`http://maps.apple.com/maps?q=${place.placeName}&ll=${place.latitude},${place.longitude}`}>{place.placeName}</a> <br></br>
+              <a className="small-text">{`${place.distance} km先`}</a>
             </div>
             )
           )

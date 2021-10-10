@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
-import { IconButton } from '@material-ui/core';
-import AccessibleForwardIcon from '@material-ui/icons/AccessibleForward';
 
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import Icon from '@material-ui/core/Icon';
 import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
@@ -25,46 +20,26 @@ const FooterWrapper = styled.div`
   background-color: #ffffff;
 `;
 
-const TabWrapper = styled.div`
-  width: 33.33vw; 
-`; // TODO: オーバーレイリストボタン実装後50vwに修正
-
-const IconWrappr = styled.div`
-    text-align: center;
-`;
-
 /*------------タブのスタイル----------*/
+// TODO: themeをコンポーネントレベルで使うのはよくないのでファイル分ける
 const theme = createMuiTheme({
     palette: {
       primary: {
         main: '#0080c9',
       },
     },
-    typography: {
-      useNextVariants: true,
-    },
   });
-  
-  const styles = {
-    root: {
-      width: 500,
-    },
-  };
+interface TabProps {
+  onClickMapTab: () => void
+  onClickClosestTab: () => void
+  onClickLandingTab: () => void
+}
 
 /*------------タブコンポーネント----------*/
-export const Tab = ({
-    posts,
-    onClickMapTab,
-    onClickClosestTab,
-    onClickLandingTab,
-}) => {
+export const Tab: React.FC<TabProps> = props => {
+    const { onClickMapTab, onClickClosestTab, onClickLandingTab } = props
 
     const [value, setValue] = useState('使い方')
-
-    const handleChange = () => {
-        setValue( {value} );
-      }
-
     
     return (
     <>
@@ -80,7 +55,7 @@ export const Tab = ({
         >
             {/*MEMO: BottomNavigationActionは, BottomNavigation直下じゃないと動作しないので注意*/}
             <BottomNavigationAction label="目的地で検索" icon={<LocationOnIcon />} 
-            onClick={() => onClickMapTab(posts)}
+            onClick={() => onClickMapTab()}
             />
             <BottomNavigationAction label="一番近いトイレ" icon={<RestoreIcon />} 
             onClick={() => onClickClosestTab()}
