@@ -30,7 +30,6 @@ export interface ScreenType {
   isVisibleList: boolean,
   isVisibleClosestToilets: boolean,
   isVisibleLandingScreen: boolean,
-  places: PlaceType[],
 }
 
 const initialToiletsState: PlaceType[] = [];
@@ -40,7 +39,6 @@ const initialScreenState: ScreenType = {
   isVisibleList: false,
   isVisibleClosestToilets: false,
   isVisibleLandingScreen: true,
-  places: [],
 };
 
 /*------------画面切り替え用最上位コンポーネント----------*/
@@ -52,10 +50,9 @@ export const Screen = () => {
   const [loading, setLoading] = useState(true)
 
   const load = async () => {
-    const results = await fetchApi()
-    console.log(results)
-    setPlaces(results.initialToiletsState)
-    setClosestToilets(results.initialClosestsState)
+    const data = await fetchApi()
+    setPlaces(data.toilets)
+    setClosestToilets(data.closestToilets)
     setLoading(false)
   }
 
@@ -66,7 +63,7 @@ export const Screen = () => {
   return (
     <>
       {loading ? (
-        null
+        null // TODO: ロード画面の実装
       ) : (
         <div className="responsive">
         <>
@@ -82,12 +79,11 @@ export const Screen = () => {
         switchScreen = {screen}
         onClickMapButton={        
           () => setScreen({
-              isVisibleMap: true,
-              isVisibleList: false,
-              isVisibleClosestToilets: false,
-              isVisibleLandingScreen: false,
-              places: places,
-              })
+            isVisibleMap: true,
+            isVisibleList: false,
+            isVisibleClosestToilets: false,
+            isVisibleLandingScreen: false,
+          })
         }
         onClickListButton={        
           () => setScreen({
@@ -95,12 +91,11 @@ export const Screen = () => {
             isVisibleList: true,
             isVisibleClosestToilets: false,
             isVisibleLandingScreen: false,
-            places: places,
-            })
+          })
         }
         />
         <List
-        places={screen.places}
+        places={places}
         />
         </ContentWrapper>
         }
@@ -126,7 +121,7 @@ export const Screen = () => {
         })}
         />
         <Map
-          places={screen.places} // TODO: ここのposts は、'post' stateからでいい気がするのでそのように変更
+          places={places}
         />
         </ContentWrapper>
         }

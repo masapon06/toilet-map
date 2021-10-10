@@ -28,11 +28,11 @@ const distance = (lat1: number, lng1: number, lat2: number, lng2: number) => {
 
 export const fetchApi = async () => {
   const results: {
-    initialClosestsState: any[]
-    initialToiletsState: any[]
+    closestToilets: any[]
+    toilets: any[]
   } = {
-    initialClosestsState: [],
-    initialToiletsState: [],
+    closestToilets: [],
+    toilets: [],
   }
   try {
     await axios.get(apiUrl)
@@ -40,16 +40,16 @@ export const fetchApi = async () => {
       res.data.results.bindings.forEach((result: any) => {
         let dist_num = Math.floor(distance(currentPosition.lat, currentPosition.lng, result.latitude.value, result.longitude.value) * 100) / 100;
         let dist = String(dist_num);
-        // 近いトイレをstateとして保存
+        // 近いトイレを判定して保存
         if (dist_num < 1) {
-          results.initialClosestsState.push({
+          results.closestToilets.push({
             latitude: result.latitude.value,
             longitude: result.longitude.value,
             placeName: result.name.value,
             distance: dist,
             });
         }
-        results.initialToiletsState.push({
+        results.toilets.push({
         latitude: result.latitude.value,
         longitude: result.longitude.value,
         placeName: result.name.value,
