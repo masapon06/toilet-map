@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ScreenType } from "../entity/types";
+import { ScreenType } from '../valueobject/Screen';
 
 const HeaderWrapper = styled.div`
   display: flex;
