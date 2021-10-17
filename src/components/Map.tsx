@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { LatLng } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import L from 'leaflet';
-import { PlaceType } from "../entity/types";
+import { PlaceType } from '../entity/Place';
  
 const placeholder = L.icon({
   iconUrl: 'placeholder.png',

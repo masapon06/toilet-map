@@ -1,4 +1,4 @@
-import { PlaceType } from "../entity/types";
+import { PlaceType } from "../entity/Place";
 interface PropsType {
   places: PlaceType[]
 }

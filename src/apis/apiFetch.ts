@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { PlaceType } from "../entity/types";
+import { PlaceType } from '../entity/Place';
 import { distance, getCurrentPosition } from '../modules/Distance';
 
 // APIエンドポイント

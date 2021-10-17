@@ -11,8 +11,9 @@ import { Closest } from "./Closest";
 import { Header } from "./Header";
 import { Tab } from "./Tab";
 import { LandingScreen } from "./FirstView";
-import { fetchApi } from "../apis/APIFetch";
-import { PlaceType, ScreenType } from "../entity/types";
+import { PlaceType } from "../entity/Place";
+import { fetchApi } from "../apis/apiFetch";
+import { ScreenType } from "../valueobject/Screen";
 
 const ContentWrapper = styled.div`
  padding: 10vh 0vh 10vh 0vh;
