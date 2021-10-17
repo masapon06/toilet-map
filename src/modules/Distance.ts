@@ -1,10 +1,5 @@
-import { latitudeAndLongitude } from "../valueobject/latitudeAndLongitude";
-
 // 以下に現在地から該当トイレまでの距離を計算するロジックを記載
-let initialCurrentPosition: latitudeAndLongitude = {
-    lat: 37.912039,
-    lng: 139.061775,
-  }
+import { latitudeAndLongitude } from "../valueobject/latitudeAndLongitude";
 
 export const distance = (lat1: number, lng1: number, lat2: number, lng2: number): number => {
     lat1 *= Math.PI / 180;
@@ -16,11 +11,15 @@ export const distance = (lat1: number, lng1: number, lat2: number, lng2: number)
 }
   
 // 以下で現在地取得。
-// 現状APIがhttps対応していないため現在地は新潟駅の座標で固定
+// 現状APIがhttps対応していないため現在地は新潟駅の座標で固定される
 export const getCurrentPosition = (): latitudeAndLongitude => {
-        navigator?.geolocation.getCurrentPosition(({coords: {latitude: lat, longitude: lng}}) => {
+    let initialCurrentPosition: latitudeAndLongitude = { // 新潟駅の座標
+        lat: 37.912039,
+        lng: 139.061775,
+    }
+    navigator?.geolocation.getCurrentPosition(({coords: {latitude: lat, longitude: lng}}) => {
         const pos: latitudeAndLongitude = {lat, lng}
-        initialCurrentPosition = {lat: pos.lat, lng: pos.lng}
+        initialCurrentPosition = {lat: pos.lat, lng: pos.lng} // ここがopen apiがhttps未対応によってエラーになる
     })
     return initialCurrentPosition
 }
