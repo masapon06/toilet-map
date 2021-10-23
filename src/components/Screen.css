@@ -15,7 +15,6 @@
 
 .header-bg {
     position: fixed;
-    background-image: url("../images/LandingScreen.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
