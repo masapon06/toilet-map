@@ -14,6 +14,8 @@ import { LandingScreen } from "./FirstView";
 import { PlaceType } from "../entity/Place";
 import { fetchApi } from "../apis/apiFetch";
 import { ScreenType } from "../valueobject/Screen";
+import { Position } from "../valueobject/Position";
+import { getCurrentPosition, getDistance } from "../modules/getDistance";
 
 const ContentWrapper = styled.div`
  padding: 10vh 0vh 10vh 0vh;
@@ -28,7 +30,6 @@ const initialScreenState: ScreenType = {
   isVisibleLandingScreen: true,
 };
 
-/*------------画面切り替え用最上位コンポーネント----------*/
 export const Screen = () => {
 
   const [places, setPlaces] = useState(initialToiletsState)
@@ -37,9 +38,20 @@ export const Screen = () => {
   const [loading, setLoading] = useState(true)
 
   const load = async () => {
-    const data = await fetchApi()
-    setPlaces(data.toilets)
-    setClosestToilets(data.closestToilets)
+    const toilets = await fetchApi()
+    const currentPosition: Position = getCurrentPosition()
+    toilets.map(toilet => {
+      toilet.distance = getDistance(
+        currentPosition,
+        {
+          lat: toilet.latitude, 
+          lng: toilet.longitude,
+        }
+      )
+    })
+    setPlaces(toilets)
+    const closestToilets = toilets.filter(toilet => Number(toilet.distance) < 1)
+    setClosestToilets(closestToilets)
     setLoading(false)
   }
 
