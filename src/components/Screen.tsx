@@ -16,6 +16,8 @@ import { fetchApi } from '../apis/apiFetch'
 import { ScreenType } from '../valueobject/Screen'
 import { Position } from '../valueobject/Position'
 import { getCurrentPosition, getDistance } from '../modules/getDistance'
+import { useDispatch } from 'react-redux'
+import { getPlaces } from '../modules/Places'
 
 const ContentWrapper = styled.div`
   padding: 21vh 0vh 10vh 0vh;
@@ -37,7 +39,10 @@ export const Screen = () => {
   const [screen, setScreen] = useState(initialScreenState)
   const [loading, setLoading] = useState(true)
 
+  const dispatch = useDispatch()
+
   const load = async () => {
+    await dispatch(getPlaces())
     const toilets = await fetchApi()
     const currentPosition: Position = getCurrentPosition()
     toilets.map((toilet) => {
