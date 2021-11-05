@@ -11,6 +11,8 @@ import thunk from 'redux-thunk'
 import axios, { AxiosInstance } from 'axios'
 import { Provider } from 'react-redux'
 import { reducerWithInitialState } from 'typescript-fsa-reducers'
+import { routerMiddleware } from 'connected-react-router'
+import reducer from './modules/reducer'
 
 declare global {
   interface Window {
@@ -27,8 +29,8 @@ const thunkWithClient = thunk.withExtraArgument(client)
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const history = createHashHistory()
 export const store = createStore(
-  reducerWithInitialState(history),
-  composeEnhancers(applyMiddleware(thunkWithClient))
+  reducer(history),
+  composeEnhancers(applyMiddleware(routerMiddleware(history), thunkWithClient))
 )
 
 ReactDOM.render(
