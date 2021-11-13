@@ -16,15 +16,14 @@ import { fetchApi } from '../apis/apiFetch'
 import { ScreenType } from '../valueobject/Screen'
 import { Position } from '../valueobject/Position'
 import { getCurrentPosition, getDistance } from '../modules/getDistance'
-import { useDispatch } from 'react-redux'
-import { getPlaces } from '../modules/Places'
+import { useDispatch, useSelector } from 'react-redux'
+import { getPlaces, Loading, State } from '../modules/Places'
 
 const ContentWrapper = styled.div`
   padding: 21vh 0vh 10vh 0vh;
   position: fixed;
 `
 
-const initialToiletsState: PlaceType[] = []
 const initialClosestsState: PlaceType[] = []
 const initialScreenState: ScreenType = {
   isVisibleMap: false,
@@ -34,38 +33,46 @@ const initialScreenState: ScreenType = {
 }
 
 export const Screen = () => {
-  const [places, setPlaces] = useState(initialToiletsState)
-  const [closestToilets, setClosestToilets] = useState(initialClosestsState)
   const [screen, setScreen] = useState(initialScreenState)
-  const [loading, setLoading] = useState(true)
 
   const dispatch = useDispatch()
 
   const load = async () => {
-    await dispatch(getPlaces())
-    const toilets = await fetchApi()
-    const currentPosition: Position = getCurrentPosition()
-    toilets.map((toilet) => {
-      toilet.distance = getDistance(currentPosition, {
-        lat: toilet.latitude,
-        lng: toilet.longitude,
+    try {
+      await dispatch(getPlaces())
+      const toilets = await fetchApi()
+      const currentPosition: Position = getCurrentPosition()
+      toilets.map((toilet) => {
+        toilet.distance = getDistance(currentPosition, {
+          lat: toilet.latitude,
+          lng: toilet.longitude,
+        })
       })
-    })
-    setPlaces(toilets)
-    const closestToilets = toilets.filter(
-      (toilet) => Number(toilet.distance) < 1
-    )
-    setClosestToilets(closestToilets)
-    setLoading(false)
+      const closestToilets = toilets.filter(
+        (toilet) => Number(toilet.distance) < 1
+      )
+    } catch (error) {
+      console.log('API CALL ERROR')
+    }
   }
 
   useEffect(() => {
     load()
   }, [])
 
+  interface placesState {
+    places: State
+  }
+  const placesState = useSelector((state: placesState) => state.places)
+
+  const searchLoading: Loading = placesState.searchLoading
+  const places: PlaceType[] = placesState.places
+
+  const closestToilets = places.filter((place) => Number(place.distance) < 1)
+
   return (
     <>
-      {loading ? null : ( // TODO: ロード画面の実装
+      {searchLoading.state === 'started' ? null : ( // TODO: ロード画面の実装
         <div className="responsive">
           <>
             {screen.isVisibleLandingScreen && <LandingScreen />}

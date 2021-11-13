@@ -3,6 +3,8 @@ import { actionCreatorFactory } from 'typescript-fsa'
 import { reducerWithInitialState } from 'typescript-fsa-reducers'
 import { asyncFactory } from 'typescript-fsa-redux-thunk'
 import { PlaceType } from '../entity/Place'
+import { Position } from '../valueobject/Position'
+import { getCurrentPosition, getDistance } from './getDistance'
 
 const createAction = actionCreatorFactory('places')
 const createAsync = asyncFactory<State, AxiosInstance>(createAction)
@@ -12,23 +14,33 @@ const apiUrl =
 
 export const getPlaces = createAsync('SEARCH', async (_, __, ___, client) => {
   const response = await client.get(apiUrl)
-  const places = response.data.results.bindings.map((result: any) => {
+  const currentPosition: Position = getCurrentPosition()
+
+  const placesState = response.data.results.bindings.map((result: any) => {
+    const latitude = result.latitude.value
+    const longitude = result.longitude.value
+
+    const distance = getDistance(currentPosition, {
+      lat: latitude,
+      lng: longitude,
+    })
+
     return {
-      latitude: result.latitude.value,
-      longitude: result.longitude.value,
+      latitude: latitude,
+      longitude: longitude,
       placeName: result.name.value,
-      distance: null,
+      distance: distance,
     }
   })
-  return places
+  return placesState
 })
 
-type Loading<E = any> = Partial<{
+export type Loading<E = any> = Partial<{
   state: 'started' | 'done' | 'failed' | null
   error: E
 }>
 
-interface State {
+export interface State {
   places: PlaceType[]
   searchLoading: Loading
 }

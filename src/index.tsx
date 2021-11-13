@@ -10,7 +10,6 @@ import thunk from 'redux-thunk'
 
 import axios, { AxiosInstance } from 'axios'
 import { Provider } from 'react-redux'
-import { reducerWithInitialState } from 'typescript-fsa-reducers'
 import { routerMiddleware } from 'connected-react-router'
 import reducer from './modules/reducer'
 
