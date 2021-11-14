@@ -12,10 +12,7 @@ import { Header } from './Header'
 import { Tab } from './Tab'
 import { LandingScreen } from './FirstView'
 import { PlaceType } from '../entity/Place'
-import { fetchApi } from '../apis/apiFetch'
 import { ScreenType } from '../valueobject/Screen'
-import { Position } from '../valueobject/Position'
-import { getCurrentPosition, getDistance } from '../modules/getDistance'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPlaces, Loading, State } from '../modules/Places'
 
@@ -24,7 +21,6 @@ const ContentWrapper = styled.div`
   position: fixed;
 `
 
-const initialClosestsState: PlaceType[] = []
 const initialScreenState: ScreenType = {
   isVisibleMap: false,
   isVisibleList: false,
@@ -40,17 +36,6 @@ export const Screen = () => {
   const load = async () => {
     try {
       await dispatch(getPlaces())
-      const toilets = await fetchApi()
-      const currentPosition: Position = getCurrentPosition()
-      toilets.map((toilet) => {
-        toilet.distance = getDistance(currentPosition, {
-          lat: toilet.latitude,
-          lng: toilet.longitude,
-        })
-      })
-      const closestToilets = toilets.filter(
-        (toilet) => Number(toilet.distance) < 1
-      )
     } catch (error) {
       console.log('API CALL ERROR')
     }
