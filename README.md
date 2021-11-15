@@ -1,7 +1,6 @@
 ## PWA「新潟トイレマップ」
 
-## 環境
-### 技術スタック
+## 技術スタック
 TypeScript/Node.js/React.js/React-Redux/typescript-fsa/prettier/styled-component/SPARQL/AWS EC2/Route53/Nginx
 
 ## アプリ概要
