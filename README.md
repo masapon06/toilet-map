@@ -1,15 +1,8 @@
 ## PWA「新潟トイレマップ」
-githubリポジトリ: https://github.com/masapon06/toilet-map
-<br>アプリURL: http://sugano-dev.jamtest.tk
 
 ## 環境
-### 開発環境
-Node.js/React.js/create-react-app/SPARQL
-### 本番環境
-Node.js/React.js/AWS EC2/Route53/Nginx
-### 開発期間と平均作業時間
-開発期間：約1週間
-<br>1日あたりの平均作業時間：約7時間
+### 技術スタック
+TypeScript/Node.js/React.js/React-Redux/typescript-fsa/prettier/styled-component/SPARQL/AWS EC2/Route53/Nginx
 
 ## アプリ概要
 「ベビーカーや車椅子で外出したとき、トイレがない。」「使いたいのに目の前のトイレが混んでいる。」そんなとき、広いトイレを素早く探すことができるのが本アプリケーションです。スマホのホーム画面に追加してお使いください。
