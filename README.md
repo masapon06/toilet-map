@@ -19,6 +19,52 @@ TypeScript/Node.js/React.js/React-Redux/typescript-fsa/prettier/styled-component
 - 当初開発したときJavaScriptで書かれていたものを、TypeScriptでリファクタリングしました。
 - Redux-Thunk, typescript-fsaを利用してコンポーネントとロジックの分離を行なっています。
 - 拡張性を意識して、ドメイン駆動設計の思想を少しずつ取り入れています。(ex. エンティティ→トイレの場所 / 値オブジェクト→緯度軽度, 現在の画面, など)
+## アーキテクチャ
+
+### データの流れ(Flux)
+```mermaid
+sequenceDiagram
+    participant API
+    participant User
+    participant ActionCreator
+    participant Reducer
+    participant Store
+
+    User->>ActionCreator: call
+    ActionCreator-->>API: fetch
+    Note over User: redux-thunkとaxiosのmiddleware
+    API-->>ActionCreator: response
+
+    rect rgb(170, 170, 170)
+    note right of ActionCreator: Redux(typescript-fsaで型付け)
+        ActionCreator->>Reducer: action, <br>payload(response)
+        Reducer->>Store: dispatch
+        Store-->>User: props
+        Note right of ActionCreator: Componentでstoreからget
+    end
+```
+
+### コンポーネント構成
+```mermaid
+flowchart
+    App --> id1
+    id1(Screen) --> id2(Map)
+    id1(Screen) --> id3(List)
+
+    subgraph Headerで表示切り替え
+    id2
+    id3
+    end
+
+    id1 --> id4(FirstView)
+
+    id1(Screen) --> Tab
+
+    id1 --> Closest
+
+    Redux -- data -.-> id1
+```
+
 
 ## デモ
 - 目的地マップ画面
