@@ -6,17 +6,28 @@ import reportWebVitals from './reportWebVitals'
 import { createHashHistory } from 'history'
 
 import { applyMiddleware, compose, createStore } from 'redux'
-import thunk from 'redux-thunk'
+import thunk, { ThunkDispatch } from 'redux-thunk'
 
 import axios, { AxiosInstance } from 'axios'
 import { Provider } from 'react-redux'
 import { routerMiddleware } from 'connected-react-router'
 import reducer from './modules/reducer'
+import { GlobalState } from './modules/globalState'
+import { AnyAction } from 'typescript-fsa'
 
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any
   }
+}
+declare module 'typescript-fsa-redux-thunk' {
+  interface DefaultRootState extends GlobalState {}
+}
+
+declare module 'react-redux' {
+  interface DefaultRootState extends GlobalState {}
+
+  function useDispatch(): ThunkDispatch<any, typeof client, AnyAction>
 }
 
 type ApiClientType = AxiosInstance | null

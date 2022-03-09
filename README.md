@@ -21,7 +21,7 @@ TypeScript/Node.js/React.js/React-Redux/typescript-fsa/prettier/styled-component
 - 拡張性を意識して、ドメイン駆動設計の思想を少しずつ取り入れています。(ex. エンティティ→トイレの場所 / 値オブジェクト→緯度軽度, 現在の画面, など)
 ## アーキテクチャ
 
-### データの流れ(Flux)
+### データの流れ
 ```mermaid
 sequenceDiagram
     participant API

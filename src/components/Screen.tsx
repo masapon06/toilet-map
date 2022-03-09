@@ -48,7 +48,7 @@ export const Screen = () => {
   interface placesState {
     places: State
   }
-  const placesState = useSelector((state: placesState) => state.places)
+  const placesState = useSelector((state) => state.places)
 
   const searchLoading: Loading = placesState.searchLoading
   const places: PlaceType[] = placesState.places
